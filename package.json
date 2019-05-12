@@ -1,0 +1,15 @@
+{
+  "name": "atf-api-docs",
+  "version": "0.1.0",
+  "description": "All The Flavors API documentation",
+  "main": "index.js",
+  "scripts": {
+    "start":" http-server src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
