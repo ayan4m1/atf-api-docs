@@ -100,17 +100,34 @@ components:
     Recipe:
       type: object
       properties:
-        mix_id:
+        id:
           type: integer
           format: int64
           description: Internal identifier
-          example: 2088772058219
-        mix_sid:
-          type: string
-          description: External base36 identifier
-          example: qnkgyb1n
+          example: 1001
         name:
           type: string
+          description: User-defined name
+        description:
+          type: string
+          description: User-defined description
+        image_url:
+          type: string
+          description: URL to a user-defined image
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+        recipe_type:
+          type: integer
+          format: int32
+          description: Undocumented
+        recipe_flavors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flavor'
       xml:
         name: Recipe
     Flavor:
@@ -125,22 +142,82 @@ components:
           type: string
           description: External base36 identifier
           example: qnkgyb1n
-        username:
+        name:
           type: string
-        firstName:
+        vendor:
+          type: object
+          properties:
+            mix_id:
+              type: integer
+              format: int64
+              description: Internal identifier
+              example: 2088772058219
+            mix_sid:
+              type: string
+              description: External base36 identifier
+              example: qnkgyb1n
+            name:
+              type: string
+            abbreviation:
+              type: string
+        created_at:
           type: string
-        lastName:
+          format: date-time
+        updated_at:
           type: string
-        email:
+          format: date-time
+        deleted:
+          type: boolean
+        deleted_at:
           type: string
-        password:
-          type: string
-        phone:
-          type: string
-        userStatus:
+          format: date-time
+        recipe_count:
           type: integer
-          description: User Status
           format: int32
+        average_millipercent:
+          type: integer
+          description: The average concentration of this flavor across all recipes, in millipercent (i.e. 1000 = 100%)
+          format: int32
+          minimum: 0
+          maximum: 1000
+        slug:
+          type: string
+        confirmed:
+          type: boolean
+          description: True if the flavor has been confirmed as valid
+        rejected:
+          type: boolean
+          description: True if the flavor has been rejected as invalid
+        vendor_url:
+          type: string
+        base:
+          type: string
+        density:
+          type: number
+          format: float
+        imageUrl:
+          type: string
+        description:
+          type: string
+        description_raw:
+          type: string
+        short_description:
+          type: string
+        vendor_percentage:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+        vendor_description_raw:
+          type: string
+        vendor_description:
+          type: string
+        other_names:
+          type: string
+        discontinued:
+          type: boolean
+        tags:
+          type: object
       xml:
         name: Flavor
     Tag:
